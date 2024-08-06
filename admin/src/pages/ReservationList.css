@@ -1,0 +1,31 @@
+.reservation-list {
+    padding: 20px;
+  }
+  
+  .reservation-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .reservation-list th, .reservation-list td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .reservation-list th {
+    background-color: #f5f5f5;
+  }
+  
+  .reservation-list button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .reservation-list button:hover {
+    background-color: #555;
+  }
+  

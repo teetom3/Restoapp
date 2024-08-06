@@ -1,0 +1,30 @@
+.clients {
+    padding: 20px;
+  }
+  
+  .clients table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .clients th, .clients td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .clients th {
+    background-color: #f5f5f5;
+  }
+  
+  .clients button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .clients button:hover {
+    background-color: #555;
+  }

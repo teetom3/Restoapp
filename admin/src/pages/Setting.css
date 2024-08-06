@@ -1,0 +1,25 @@
+.settings {
+    padding: 20px;
+  }
+  
+  .auto-accept {
+    margin-bottom: 20px;
+  }
+  
+  .open-hours {
+    margin-top: 20px;
+  }
+  
+  .day-hours {
+    margin-bottom: 15px;
+  }
+  
+  .day-hours label {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  h4 {
+    margin: 0;
+  }
+  

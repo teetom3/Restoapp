@@ -1,0 +1,17 @@
+.reservation-button {
+    background-color: #f8b400;
+    color: white;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Rubik", sans-serif;
+  }
+  
+  .reservation-button:hover {
+    background-color: #e89c00;
+  }
+  
