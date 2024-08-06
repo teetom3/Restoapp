@@ -15,6 +15,28 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const sendReservationNotification = (reservation) => {
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER, // l'email du gérant
+      subject: 'Nouvelle demande de réservation',
+      text: `Vous avez une nouvelle demande de réservation :
+      Nom: ${reservation.name}
+      Email: ${reservation.email}
+      Date: ${reservation.date}
+      Heure: ${reservation.time}
+      Nombre de personnes: ${reservation.numberOfPeople}
+      `,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log('Email sent: ' + info.response);
+      });
+    };
+
+
 // Fonction pour envoyer un email de confirmation
 const sendConfirmationEmail = (reservation) => {
   const mailOptions = {
@@ -68,12 +90,15 @@ router.post('/', async (req, res) => {
         status: settings.autoAccept ? 'confirmed' : 'pending'
       });
   
+     
       await reservation.save();
   
       // Envoi d'email de confirmation si autoAccept est activé
       if (settings.autoAccept) {
-        sendConfirmationEmail(reservation);
+        sendConfirmationEmail(reservation) 
       }
+
+      sendReservationNotification(reservation);
   
       res.status(201).json(reservation);
     } catch (err) {
