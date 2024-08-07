@@ -5,6 +5,15 @@ const Setting = require('../models/Setting');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 
+
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('fr-FR', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
 // Configuration de Nodemailer
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
@@ -16,6 +25,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendReservationNotification = (reservation) => {
+  const formattedDate = formatDate(reservation.date);
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER, // l'email du gérant
@@ -23,7 +33,7 @@ const sendReservationNotification = (reservation) => {
       text: `Vous avez une nouvelle demande de réservation :
       Nom: ${reservation.name}
       Email: ${reservation.email}
-      Date: ${reservation.date}
+      Date: ${formattedDate}
       Heure: ${reservation.time}
       Nombre de personnes: ${reservation.numberOfPeople}
       `,
@@ -39,11 +49,12 @@ const sendReservationNotification = (reservation) => {
 
 // Fonction pour envoyer un email de confirmation
 const sendConfirmationEmail = (reservation) => {
+  const formattedDate = formatDate(reservation.date);
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: reservation.email,
     subject: 'Confirmation de Réservation',
-    text: `Votre réservation pour le ${reservation.date} à ${reservation.time} a été confirmée.`,
+    text: `Votre réservation pour le ${formattedDate} à ${reservation.time} a été confirmée.`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

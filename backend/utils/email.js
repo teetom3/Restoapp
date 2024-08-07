@@ -8,26 +8,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = async (email) => {
+const sendEmail = async (to, subject, message) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: email,
-    subject: 'Confirmation de Réservation',
-    text: 'Votre réservation a été confirmée.',
+    to,
+    subject,
+    text: message,
   };
 
   await transporter.sendMail(mailOptions);
 };
 
-const sendEmailToAll = async (emails) => {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    bcc: emails,
-    subject: 'Information Importante de Notre Restaurant',
-    text: 'Nous avons des nouvelles importantes pour vous.',
-  };
-
-  await transporter.sendMail(mailOptions);
-};
-
-module.exports = { sendEmail, sendEmailToAll };
+module.exports = { sendEmail };
