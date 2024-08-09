@@ -4,7 +4,7 @@ import '../Header.css';
 const Header = () => {
   return (
     <header className="header">
-      <h1>LA BARRACA</h1>
+      <h1>Bouche à Oreille</h1>
       <h2>WE SERVE TAPAS WITH LOVE</h2>
       <p>
         La Barraca, jouw plek voor heerlijke mediterraanse tapas in het hart van

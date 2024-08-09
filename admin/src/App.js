@@ -14,6 +14,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <div className='app-background'>
         <Navbar />
         <div className="content">
           <Routes>
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/clients" element={<ClientList />} />
             <Route path="/compose-email" element={<ComposeEmail />} />
           </Routes>
+        </div>
         </div>
       </div>
     </Router>
